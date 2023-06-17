@@ -20,7 +20,7 @@
                         <h6 class="m-0 font-weight-bold text-primary">List Perbandingan Kriteria </h6>
                     </div>
                     <div class="card-body">
-                        <form class="row g-3 mb-3" method="POST" action="{{route('addRatioCriteria')}}">
+                        <form class="row g-3 mb-3" method="POST" action="{{route('addRatioCriteria2')}}">
                             @csrf
                             <div class="form-group col-4">
                                 <select class="form-control" name="v_criteria">

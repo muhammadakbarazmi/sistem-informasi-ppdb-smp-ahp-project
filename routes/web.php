@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\HasilRankingController;
 use App\Http\Controllers\Siswa\SiswaController;
 use App\Http\Controllers\Siswa\HasilRankingSiswaController;
 use App\Http\Controllers\Guru\DataKriteriaController;
+use App\Http\Controllers\Guru\GuruController;
 use App\Http\Controllers\Guru\PerbandinganKriteriaController;
 use App\Http\Controllers\Guru\RatioKriteriaController;
 use App\Http\Controllers\Guru\RatioAlternatifController;
@@ -109,20 +110,20 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
 Route::group(['middleware' => ['auth', 'ceklevel:guru']], function () {
     Route::get('/guru', [GuruController::class, 'index']);
 
-    Route::get('/guru/criteriaData', [DataKriteriaController::class, 'index'])->name('criteriaData');
-    Route::post('/guru/upsertData', [DataKriteriaController::class, 'store'])->name('upsertData');
-    Route::get('/guru/deleteData/{id}', [DataKriteriaController::class, 'destroy'])->name('deleteData');
+    Route::get('/guru/criteriaData', [DataKriteriaController::class, 'index'])->name('criteriaData2');
+    Route::post('/guru/upsertData', [DataKriteriaController::class, 'store'])->name('upsertData2');
+    Route::get('/guru/deleteData/{id}', [DataKriteriaController::class, 'destroy'])->name('deleteData2');
 
-    Route::get('/guru/perbandingan/criteria', [PerbandinganKriteriaController::class, 'index'])->name('criteria');
-    Route::get('/guru/perbandingan/criteria/deleteCriteria/{criteria}', [PerbandinganKriteriaController::class, 'destroy'])->name('deleteCriteria');
+    Route::get('/guru/perbandingan/criteria', [PerbandinganKriteriaController::class, 'index'])->name('criteria2');
+    Route::get('/guru/perbandingan/criteria/deleteCriteria/{criteria}', [PerbandinganKriteriaController::class, 'destroy'])->name('deleteCriteria2');
 
     Route::get('/guru/ratioCriteria', [RatioKriteriaController::class, 'index'])->name('ratioCriteria');
-    Route::post('/guru/addRatioCriteria', [PerbandinganKriteriaController::class, 'storeRatio'])->name('addRatioCriteria');
-    Route::post('/guru/massRatioCriteria', [PerbandinganKriteriaController::class, 'massUpdate'])->name('massRatioCriteria');
-    Route::get('/guru/deleteRatioCriteria/{v_id}/{h_id}', [RatioCriteriaController::class, 'destroy'])->name('deleteRatioCriteria');
+    Route::post('/guru/addRatioCriteria', [PerbandinganKriteriaController::class, 'storeRatio'])->name('addRatioCriteria2');
+    Route::post('/guru/massRatioCriteria', [PerbandinganKriteriaController::class, 'massUpdate'])->name('massRatioCriteria2');
+    Route::get('/guru/deleteRatioCriteria/{v_id}/{h_id}', [RatioCriteriaController::class, 'destroy'])->name('deleteRatioCriteria2');
 
-    Route::get('/guru/ratioAlternative', [RatioAlternatifController::class, 'index'])->name('ratioAlternative');
-    Route::post('/guru/addRatioAlternative', [RatioAlternatifController::class, 'store'])->name('addRatioAlternative');
+    Route::get('/guru/ratioAlternative', [RatioAlternatifController::class, 'index'])->name('ratioAlternative2');
+    Route::post('/guru/addRatioAlternative', [RatioAlternatifController::class, 'store'])->name('addRatioAlternative2');
     Route::get('/guru/resultAlternative', function () {
 
         $data = RatioAlternatifController::showAlternative();
@@ -132,17 +133,17 @@ Route::group(['middleware' => ['auth', 'ceklevel:guru']], function () {
         }
         return view('guru/package/analisis/ratioAlternative')->with('data', $data);
     })->name('resultAlternative');
-    Route::get('/guru/deleteRatioAlternative/{criterias_id}/{v_id}/{h_id}', [RatioAlternatifController::class, 'destroy'])->name('deleteRatioAlternative');
-    Route::post('/guru/massRatioAlternative', [RatioAlternatifController::class, 'massUpdate'])->name('massRatioAlternative');
+    Route::get('/guru/deleteRatioAlternative/{criterias_id}/{v_id}/{h_id}', [RatioAlternatifController::class, 'destroy'])->name('deleteRatioAlternative2');
+    Route::post('/guru/massRatioAlternative', [RatioAlternatifController::class, 'massUpdate'])->name('massRatioAlternative2');
 
-    Route::get('/guru/rangking', [HasilPerangkinganController::class, 'index'])->name('rangking');
+    Route::get('/guru/rangking', [HasilPerangkinganController::class, 'index'])->name('rangking2');
 });
 
 // SISWA
 Route::group(['middleware' => ['auth', 'ceklevel:siswa']], function () {
     
     Route::resource('/user/siswa', SiswaController::class);
-    Route::get('/user/rangking', [HasilRankingSiswaController::class, 'index'])->name('rangking');
+    Route::get('/user/rangking', [HasilRankingSiswaController::class, 'index'])->name('rangking3');
 });
 
 // TAMPILAN FRONTEND USER
@@ -150,4 +151,3 @@ Route::get('/frontend-dashboard', [FrontendController::class, 'frontendDashboard
 Route::get('/frontend-detail', [FrontendController::class, 'frontendDetail'])->name('frontend.detail');
 Route::get('/frontend-galeri', [FrontendController::class, 'frontendGaleri'])->name('frontend.galeri');
 Route::get('/frontend-rangking', [FrontendController::class, 'frontendRangking'])->name('frontend.ranking');
-

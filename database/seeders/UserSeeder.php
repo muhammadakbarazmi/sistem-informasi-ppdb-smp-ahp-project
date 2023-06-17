@@ -17,26 +17,14 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Administrator',
+            'name' => 'Administrator1',
             'level' => 'admin',
-            'email' => 'admin@gmail.com',
+            'email' => 'atiknh1@gmail.com',
             'password' => Hash::make('admin123'),
-            'alamat' => 'Kabupaten Lumajang',
-            'tanggal_lahir' => '2000-02-29',
-            'jenis_kelamin' => 'Laki-laki',
-            'gambar' => 'fotosiswa/dandi 2.jpg',
-            'remember_token' => Str::random(),
-        ]);
-        
-        DB::table('users')->insert([
-            'name' => 'M. Akbar Azmi',
-            'level' => 'siswa',
-            'email' => 'makbarazmi@gmail.com',
-            'password' => Hash::make('siswa123'),
             'alamat' => 'Kabupaten Ponorogo',
-            'tanggal_lahir' => '2000-05-12',
-            'jenis_kelamin' => 'Laki-laki',
-            'gambar' => 'fotosiswa/rozak.jpg',
+            'tanggal_lahir' => '1997-01-01',
+            'jenis_kelamin' => 'Perempuan',
+            'gambar' => 'fotosiswa/admin.jpg',
             'remember_token' => Str::random(),
         ]);
     }

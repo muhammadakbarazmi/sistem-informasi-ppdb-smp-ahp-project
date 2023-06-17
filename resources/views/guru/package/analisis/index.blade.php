@@ -20,7 +20,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Input Data</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('upsertData')}}" method="POST">
+                    <form action="{{route('upsertData2')}}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label for="Name">Pilih Siswa</label>
